@@ -7,7 +7,7 @@ session_start();
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css.css">
+    <link rel="stylesheet" href="inscription.css">
     <title>Document</title>
 </head>
 <body>
@@ -20,31 +20,28 @@ session_start();
         $password="root";
         $pdo = new PDO('mysql:host='.$ipserver.';dbname='.$base.'',$login,$password);
     
-
-
-    if(isset($_POST['connexion']))
+        if(isset($_POST['inscription'])){
+    if($_POST['confpassword'] == $_POST['password'])
     {
-      
-        $requete1 = "SELECT * FROM `Utilisateur` WHERE `login`='".$_POST['login']."'AND `password`= SHA2('".$_POST['password']."', 256);";
+    if(isset($_POST['inscription']))
+    {
+        
+            $requete1 = "INSERT INTO `Utilisateur`(`login`, `password`) VALUES ('".$_POST['login']."',SHA2('".$_POST['password']."', 256))";
 
-        $resultat=$pdo->query($requete1);
-
-        if($resultat->rowCount()>0)
-        {
-          header('location: acceuil.php');
+            $resultat=$pdo->query($requete1);
         }
-        else
-        {
-            echo"le mot de passe ou le login n'est pas bon";
-        }
+    }else
+    {
+        echo"les mots de passe ne corresponde pas";
     }
+}
 }catch(Exception $error)
 {
     $error->getMessage();
 }
-if(isset($_POST['inscription']))
+if(isset($_POST['connexion']))
 {
-    header('location: inscription.php');
+    header('location: ../connexion/connexion.php');
 }
     ?>
 <div class="center">
@@ -113,8 +110,9 @@ if(isset($_POST['inscription']))
       <input class="username" type="text" autocomplete="on" placeholder="login" name="login"/>
       
       <div class="fa fa-commenting"></div>
-      <input class="password" type="password" autocomplete="off" placeholder="password" name="password"/>
-
+      <input class="password" type="password" autocomplete="off" placeholder="password" name="password" />
+      <input class="password" type="password" autocomplete="off" placeholder="password" name="confpassword" />
+      
     <input type="submit" class="login-button" name="connexion" value="connexion"/>
     <input type="submit" class="login-button" name="inscription" value="inscription"/>
   </form>
@@ -122,5 +120,5 @@ if(isset($_POST['inscription']))
   
  
 </body>
-<script src='js.js'></script>
+<script src='inscription.js'></script>
 </html>
