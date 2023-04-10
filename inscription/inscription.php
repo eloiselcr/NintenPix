@@ -1,20 +1,23 @@
 <?php
 session_start();
 ?>
-<!DOCTYPE html>
-<html lang="en">
+
+<!DOCTYPE HTML>
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="inscription.css">
-    <title>Document</title>
+    <title>NintenWish - Inscription</title>
 </head>
 <body>
+
     <?php
+
     try
     {
-        $ipserver="192.168.64.86";
+        $ipserver="192.168.1.57";
         $base="nintendogs";
         $login="root";
         $password="root";
@@ -26,13 +29,13 @@ session_start();
     if(isset($_POST['inscription']))
     {
         
-            $requete1 = "INSERT INTO `Utilisateur`(`login`, `password`) VALUES ('".$_POST['login']."',SHA2('".$_POST['password']."', 256))";
+            $requete1 = "INSERT INTO `Utilisateurs`(`login`, `password`) VALUES ('".$_POST['login']."',SHA2('".$_POST['password']."', 256))";
 
             $resultat=$pdo->query($requete1);
         }
     }else
     {
-        echo"les mots de passe ne corresponde pas";
+        echo"Les entrées de password ne correspondent pas.";
     }
 }
 }catch(Exception $error)
@@ -107,14 +110,14 @@ if(isset($_POST['connexion']))
   <div class="login">
     <form method="post" >
       <div class="fa fa-phone"></div>
-      <input class="username" type="text" autocomplete="on" placeholder="login" name="login"/>
+      <input class="username" type="text" autocomplete="on" placeholder="Login" name="login"/>
       
       <div class="fa fa-commenting"></div>
-      <input class="password" type="password" autocomplete="off" placeholder="password" name="password" />
-      <input class="password" type="password" autocomplete="off" placeholder="password" name="confpassword" />
+      <input class="password" type="password" autocomplete="off" placeholder="Password" name="password" />
+      <input class="password" type="password" autocomplete="off" placeholder="Confirmer Password" name="confpassword" />
       
-    <input type="submit" class="login-button" name="connexion" value="connexion"/>
-    <input type="submit" class="login-button" name="inscription" value="inscription"/>
+    <input type="submit" class="login-button" name="connexion" value="Connexion"/>
+    <input type="submit" class="login-button" name="inscription" value="Inscription"/>
   </form>
   
   

@@ -1,20 +1,23 @@
 <?php
 session_start();
 ?>
-<!DOCTYPE html>
-<html lang="en">
+
+<!DOCTYPE HTML>
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="connexion.css">
-    <title>Document</title>
+    <title>NintenWish - Connexion</title>
 </head>
 <body>
+
     <?php
-    try
+
+    try // Connexion à la BDD sur PHPMyAdmin
     {
-        $ipserver="192.168.64.86";
+        $ipserver="192.168.1.57";
         $base="nintendogs";
         $login="root";
         $password="root";
@@ -25,17 +28,19 @@ session_start();
     if(isset($_POST['connexion']))
     {
       
-        $requete1 = "SELECT * FROM `Utilisateur` WHERE `login`='".$_POST['login']."'AND `password`= SHA2('".$_POST['password']."', 256);";
+        $requete1 = "SELECT * FROM `Utilisateurs` WHERE `login`='".$_POST['login']."'AND `password`= SHA2('".$_POST['password']."', 256);";
 
         $resultat=$pdo->query($requete1);
 
         if($resultat->rowCount()>0)
         {
-          header('location: acceuil.php');
+          $utilisateur = $resultat->fetch();
+          $_SESSION['id_utilisateur'] = $utilisateur['id'];
+          header('location: ../puppy/puppy.php');
         }
         else
         {
-            echo"le mot de passe ou le login n'est pas bon";
+            echo"Login ou Password incorrect.";
         }
     }
 }catch(Exception $error)
@@ -110,13 +115,13 @@ if(isset($_POST['inscription']))
   <div class="login">
     <form method="post" >
       <div class="fa fa-phone"></div>
-      <input class="username" type="text" autocomplete="on" placeholder="login" name="login"/>
+      <input class="username" type="text" autocomplete="on" placeholder="Login" name="login"/>
       
       <div class="fa fa-commenting"></div>
-      <input class="password" type="password" autocomplete="off" placeholder="password" name="password"/>
+      <input class="password" type="password" autocomplete="off" placeholder="Password" name="password"/>
 
-    <input type="submit" class="login-button" name="connexion" value="connexion"/>
-    <input type="submit" class="login-button" name="inscription" value="inscription"/>
+    <input type="submit" class="login-button" name="connexion" value="Connexion"/>
+    <input type="submit" class="login-button" name="inscription" value="Inscription"/>
   </form>
   
   
