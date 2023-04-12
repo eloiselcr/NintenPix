@@ -1,7 +1,8 @@
 <?php
 // STARTUP DE BASE 
+session_start();
 include ("../bdd/bdd.php");
-include ("../connexion/connexion.php");
+
 
 
 if (!isset($_SESSION['id_utilisateur'])) // Vérification si l'user est bien connecté

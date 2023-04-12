@@ -41,10 +41,7 @@ try // Connexion à la BDD sur PHPMyAdmin
             
         }
     }
-}catch(Exception $error)
-{
-    $error->getMessage();
-}
+
 
 ?>
 
@@ -112,5 +109,10 @@ try // Connexion à la BDD sur PHPMyAdmin
 
 </html>
 </body>
-
+<?php
+}catch(Exception $error)
+{
+    $error->getMessage();
+}
+?>
 </html>
