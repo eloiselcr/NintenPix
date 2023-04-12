@@ -1,0 +1,99 @@
+.container {
+    max-width: 800 px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  h1 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .filter-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  thead {
+    background-color: #333;
+    color: #fff;
+  }
+  
+  th,
+  td {
+    padding: 10px;
+    text-align: left;
+    border: 1px solid #ccc;
+  }
+  
+  tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  
+  tr:hover {
+    background-color: #ddd;
+  }
+  
+  .iPhone-X {
+    background-color: #d3d3d3;
+  }
+  
+  .iPhone-XS {
+    background-color: #c0c0c0;
+  }
+  
+  .iPhone-XR {
+    background-color: #b0b0b0;
+  }
+  
+  .iPhone-11 {
+    background-color: #a0a0a0;
+  }
+  
+  .iPhone-12 {
+    background-color: #909090;
+  }
+  
+  #search {
+    padding: 10px;
+    border: none;
+    border-bottom: 1px solid #ccc;
+    width: 200px;
+  }
+  
+  #model-filter {
+    padding: 10px;
+    border: none;
+    background-color: #f2f2f2;
+    color: #333;
+  }
+  
+  #model-filter option {
+    padding: 10px;
+    border: none;
+    background-color: #fff;
+    color: #333;
+  }
+  
+  .alert {
+    background-color: #f44336;
+    color: #fff;
+    padding: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .success {
+    background-color: #4caf50;
+    color: #fff;
+    padding: 10px;
+    margin-bottom: 20px;
+  }
+  
+  

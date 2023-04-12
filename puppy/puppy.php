@@ -1,9 +1,12 @@
 <?php
 // STARTUP DE BASE 
+include ("../bdd/bdd.php");
 include ("../connexion/connexion.php");
+
 
 if (!isset($_SESSION['id_utilisateur'])) // Vérification si l'user est bien connecté
 {
+    
     header('location: ../connexion/connexion.php');
     exit;
 }
