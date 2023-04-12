@@ -1,5 +1,6 @@
 <?php
 session_start();
+
 ?>
 
 <!DOCTYPE HTML>
@@ -17,18 +18,15 @@ session_start();
 
     try // Connexion à la BDD sur PHPMyAdmin
     {
-        $ipserver="192.168.1.57";
-        $base="nintendogs";
-        $login="root";
-        $password="root";
-        $pdo = new PDO('mysql:host='.$ipserver.';dbname='.$base.'',$login,$password);
-    
+       
+      include ("../bdd/bdd.php");
 
 
     if(isset($_POST['connexion']))
     {
       
-        $requete1 = "SELECT * FROM `Utilisateurs` WHERE `login`='".$_POST['login']."'AND `password`= SHA2('".$_POST['password']."', 256);";
+      $requete1 = "SELECT * FROM `Utilisateurs` WHERE `login`='".$_POST['login']."'AND `password`= SHA2('".$_POST['password']."', 256);";
+
 
         $resultat=$pdo->query($requete1);
 
