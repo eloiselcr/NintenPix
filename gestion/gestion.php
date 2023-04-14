@@ -17,32 +17,12 @@ include ("../bdd/bdd.php");
 <html>
 
 <?php
-
-try // Connexion à la BDD sur PHPMyAdmin
-    {
-       
-      include ("../bdd/bdd.php");
-
-
-    if(isset($_POST['connexion']))
-    {
-      
-      $requete1 = "SELECT * FROM `Utilisateurs` WHERE `login`='".$_POST['login']."'AND `password`= SHA2('".$_POST['password']."', 256);";
-
-
-        $resultat=$pdo->query($requete1);
-
-        if($resultat->rowCount()>0)
-        {
-          
-        }
-        else
-        {
-            
-        }
-    }
-
-
+if (!isset($_SESSION['id_utilisateur'])) // Vérification si l'user est bien connecté
+{
+    
+    header('location: ../connexion/connexion.php');
+    exit;
+}
 ?>
 
 <head>
@@ -69,12 +49,12 @@ try // Connexion à la BDD sur PHPMyAdmin
       </thead>
       <tbody>
         <tr class="iPhone X">
-          <td>iPhone X</td>
-          <td>Silver</td>
-          <td>Silver</td>
-          <td>Silver</td>
-          <td>Silver</td>
-          <td>Silver</td>
+          <td>scoobydoo</td>
+          <td>berger allemand</td>
+          <td>100</td>
+          <td>100</td>
+          <td>100</td>
+          <td>100</td>
           
        
       </tbody>
@@ -104,15 +84,13 @@ try // Connexion à la BDD sur PHPMyAdmin
       </tbody>
     </table>
   </div>
+  <form method="post" >
+ <input type="submit" class="login-button" name="création" value="création"/>
+  </form>
 
 </body>
 
 </html>
 </body>
-<?php
-}catch(Exception $error)
-{
-    $error->getMessage();
-}
-?>
+
 </html>

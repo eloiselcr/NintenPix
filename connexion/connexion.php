@@ -34,7 +34,7 @@ session_start();
         {
           $utilisateur = $resultat->fetch();
           $_SESSION['id_utilisateur'] = $utilisateur['id'];
-          header('location: ../puppy/puppy.php');
+          header('location: ../gestion/gestion.php');
         }
         else
         {

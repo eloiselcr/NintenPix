@@ -111,8 +111,9 @@ if(isset($_POST['connexion']))
       <input class="password" type="password" autocomplete="off" placeholder="Password" name="password" />
       <input class="password" type="password" autocomplete="off" placeholder="Confirmer Password" name="confpassword" />
       
-    <input type="submit" class="login-button" name="connexion" value="Connexion"/>
+    
     <input type="submit" class="login-button" name="inscription" value="Inscription"/>
+    <input type="submit" class="login-button" name="connexion" value="Connexion"/>
   </form>
   
   
