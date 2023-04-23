@@ -38,7 +38,7 @@ $resultat = $pdo->query($sql);
 
 <body>
   <div class="container">
-    <h1>Acceuille salut</h1>
+    <h1>Acceuille </h1>
    
     <div class="filter-container">
     </div>
