@@ -2,6 +2,14 @@
 session_start();
 include ("../bdd/bdd.php");
 
+$id_utilisateur = $_SESSION['id_utilisateur'];
+
+if (!isset($_SESSION['id_utilisateur'])) // Vérification si l'user est bien connecté
+{
+    
+    header('location: ../connexion/connexion.php');
+    exit;
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -51,44 +59,7 @@ include ("../bdd/bdd.php");
                 required />
             </div>
 
-            <div class="form-group">
-                <label 
-                id="number-label" 
-                for="number">
-                Age
-                </label>
-                <input 
-                type="number" 
-                name="age" 
-                id="number" 
-                min="10" 
-                max="99" 
-                class="form-control" 
-                placeholder="Age" />
-            </div>
-            <div class="form-group">
-                <p>
-                    Sexe
-                </p>
-                <label>
-                    <input
-                    name="gender"
-                    value="male"
-                    type="radio"
-                    class="input-radio"
-                    checked
-                    />mâle
-                </label>
-                <label>
-                    <input
-                    name="gender"
-                    value="female"
-                    type="radio"
-                    class="input-radio"
-                    checked
-                    />Femelle 
-                </label>
-            </div>
+            
             <div class="form-group">
                 <p>
                     Races
@@ -102,29 +73,7 @@ include ("../bdd/bdd.php");
                     Race
                 </option>
 
-                <option value="swordsman">
-                    Swordsman
-                </option>
-
-                <option value="archer">
-                    Archer
-                </option>
-
-                <option value="mage">
-                    Mage
-                </option>
-
-                <option value="acolyte">
-                    Acolyte
-                </option>
-
-                <option value="thief">
-                    Thief
-                </option>
-
-                <optinon value="merchant">
-                    Merchant
-                </optinon>
+                
                 </select>
             </div>
 

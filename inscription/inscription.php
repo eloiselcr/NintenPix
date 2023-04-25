@@ -30,8 +30,23 @@ session_start();
             $requete1 = "INSERT INTO `Utilisateurs`(`login`, `password`) VALUES ('".$_POST['login']."',SHA2('".$_POST['password']."', 256))";
 
             $resultat=$pdo->query($requete1);
+            
+            
+            $requete2 = "SELECT * FROM `Utilisateurs` WHERE `login`='".$_POST['login']."'AND `password`= SHA2('".$_POST['password']."', 256);";
 
-            header('location: ../creation/creation.php');
+
+            $resultat2=$pdo->query($requete2);
+            
+            if($resultat2->rowCount()>0)
+            {
+              $utilisateur = $resultat->fetch();
+              $_SESSION['id_utilisateur'] = $utilisateur['id'] = true;
+              header('location: ../creation/creation.php');
+            }  
+          
+        
+
+            
 
 
       
