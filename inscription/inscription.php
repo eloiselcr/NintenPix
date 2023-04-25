@@ -1,5 +1,6 @@
 <?php
 session_start();
+
 ?>
 <!DOCTYPE HTML>
 <html lang="fr">
@@ -18,21 +19,30 @@ session_start();
     {
       include ("../bdd/bdd.php");
     
-        if(isset($_POST['inscription'])){
-    if($_POST['confpassword'] == $_POST['password'])
+    if(isset($_POST['inscription'])){
+    
+      if($_POST['login'] != ''){
+    
+      if($_POST['confpassword'] == $_POST['password'])
     {
-      if(isset($_POST['inscription']))
-      {
+      
         
             $requete1 = "INSERT INTO `Utilisateurs`(`login`, `password`) VALUES ('".$_POST['login']."',SHA2('".$_POST['password']."', 256))";
 
             $resultat=$pdo->query($requete1);
-      }
+
+            header('location: ../creation/creation.php');
+
+
+      
     }else
     {
         echo"Les entrées de password ne correspondent pas.";
     }
-}
+    
+}else { echo"veuillez saisir un login";}
+        }
+        
 }catch(Exception $error)
 {
     $error->getMessage();
