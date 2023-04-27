@@ -47,6 +47,17 @@ $resultat = $pdo->query($sql);
   <h1>Vos animaux</h1>
 <?php
  // Vérification si la requête a retourné des résultats
+
+ if(isset($_POST['creation']))
+ {
+  header('location: ../creation/creation.php');
+ }
+ if(isset($_POST['deconnexion']))
+ {
+  session_unset();
+  session_destroy();
+  header('location: ../connexion/connexion.php');
+}
 if ($resultat->rowCount() == 0) {
   echo "Aucun animal trouvé pour cet utilisateur.";
 } else {
@@ -78,7 +89,7 @@ if ($resultat->rowCount() == 0) {
       <td><?php  echo " " . $animal['Faim'] . ""; ?></td>
       <td><?php  echo " " . $animal['Bonheur'] . ""; ?></td>
       <td><?php  echo " " . $animal['Proprete'] . ""; ?></td>
-      <td><img src="<?php echo $race['img']; ?>" alt="image de la race <?php echo $race['nom']; ?>"></td>
+      <td><a href="../puppy/puppy.php"><img src="<?php echo $race['img']; ?>" alt="image de la race <?php echo $race['nom']; ?>"></a></td>
 
 
       <tbody>
@@ -97,11 +108,13 @@ if ($resultat->rowCount() == 0) {
 
 
   <form method="post" >
+    <input type="submit" name="creation" value="creation"/>
+    <input type="submit" name="deconnexion" value="deconnexion"/>
   </form>
 
 </body>
 
 </html>
 </body>
-
+<script src='gestion.js'></script>
 </html>

@@ -31,18 +31,25 @@ session_start();
 
             $resultat=$pdo->query($requete1);
             
-            
+           /* 
             $requete2 = "SELECT * FROM `Utilisateurs` WHERE `login`='".$_POST['login']."'AND `password`= SHA2('".$_POST['password']."', 256);";
 
 
             $resultat2=$pdo->query($requete2);
+
+            $login = $_POST['login'];
+            $requeteid = ("SELECT `id` FROM `Utilisateurs` WHERE `login` = '$login'")  ;
+            $requeteid = $pdo->exec($requeteid);
+            $_SESSION['id'] = $requeteid;
+
+            //$utilisateur = $resultat->fetch();
+            // $_SESSION['id_utilisateur'] = $utilisateur['id'] = true;
+            header('location: ../creation/creation.php');
             
             if($resultat2->rowCount()>0)
             {
-              $utilisateur = $resultat->fetch();
-              $_SESSION['id_utilisateur'] = $utilisateur['id'] = true;
-              header('location: ../creation/creation.php');
-            }  
+             
+            }  */
           
         
 
