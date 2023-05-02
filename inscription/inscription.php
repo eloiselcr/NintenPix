@@ -71,7 +71,7 @@ session_start();
 }
 if(isset($_POST['connexion']))
 {
-    header('location: ../connexion/connexion.php');
+    header('location: ../index.php');
 }
     ?>
 <div class="center">

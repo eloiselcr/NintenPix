@@ -1,49 +1,93 @@
 <?php
-// STARTUP DE BASE 
 session_start();
 include ("../bdd/bdd.php");
-
-
+$id_utilisateur = $_SESSION['id_utilisateur'];
 
 if (!isset($_SESSION['id_utilisateur'])) // Vérification si l'user est bien connecté
 {
-    
-    header('location: ../connexion/connexion.php');
+    header('location: ../index.php');
     exit;
 }
 
-$id_utilisateur = $_SESSION['id_utilisateur'];
+// On récupère l'id du chien sélectionné dans "gestion.php"
+$idAnimal = $_GET['id'];
 
+// Requête élémentaire pour les informations du chien
+$sql = "SELECT * FROM Animaux WHERE id = $idAnimal AND idUtilisateurs = $id_utilisateur";
+$resultat = $pdo->query($sql);
+
+if ($resultat->rowCount() == 0) {
+  echo "Animal non trouvé.";
+} else {
+  $animal = $resultat->fetch();
+  $sql2 ="SELECT Races.nom FROM Animaux JOIN Races ON Animaux.idRaces = Races.id WHERE Races.id =".$animal['idRaces']." ";
+  $resultat2 = $pdo->query($sql2);
+  $race = $resultat2->fetch();
+
+  $sql3 = "SELECT Races.nom, Races.img FROM Animaux JOIN Races ON Animaux.idRaces = Races.id WHERE Races.id =".$animal['idRaces']." ";
+  $resultat3 = $pdo->query($sql3);
+  $race = $resultat3->fetch();
 ?>
+
 
 <!DOCTYPE HTML>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
+<meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NintenWish - Puppy</title>
+    <link rel="stylesheet" href="puppy.css">
+    <title><?php echo $animal['nom']; ?></title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
-<body>
-<?php
-$sql = "SELECT * FROM Animaux WHERE idUtilisateurs = $id_utilisateur";
-$resultat = $pdo->query($sql);
 
-// Vérification si la requête a retourné des résultats
-if ($resultat->rowCount() == 0) {
-    echo "Aucun animal trouvé pour cet utilisateur.";
-} else {
-    // Affichage des données de l'animal
-    $animal = $resultat->fetch();
-    echo "<h2>Mon chien :</h2>";
-    echo "<ul>";
-    echo "<li>Nom : " . $animal['nom'] . "</li>";
-    echo "<li>Santé : " . $animal['Sante'] . "</li>";
-    echo "<li>Propreté : " . $animal['Proprete'] . "</li>";
-    echo "<li>Faim : " . $animal['Faim'] . "</li>";
-    echo "<li>Bonheur : " . $animal['Bonheur'] . "</li>";
-    echo "</ul>";
+
+<body>
+
+<div class="background-video">
+  <video autoplay loop muted>
+    <source src="../ressources/terrains/waterfalls.mov" type="video/mp4">
+    <!-- Ajouter d'autres sources si nécessaire pour la compatibilité -->
+  </video>
+  <div class="overlay">
+    <div class="info info-left">
+      <span class="info-label">Faim :</span>
+      <span class="info-value"><?php echo $animal['Faim']; ?>%</span>
+      <span class="info-label">Propreté :</span>
+      <span class="info-value"><?php echo $animal['Proprete']; ?>%</span>
+    </div>
+    <h1><?php echo $animal['nom']; ?></h1>
+    <div class="info info-right">
+      <span class="info-label">Bonheur :</span>
+      <span class="info-value"><?php echo $animal['Bonheur']; ?>%</span>
+      <span class="info-label">Santé :</span>
+      <span class="info-value"><?php echo $animal['Sante']; ?>%</span>
+    </div>
+  </div>
+</div>
+
+<div class="doggo">
+  <img src="<?php echo $race['img']; ?>" alt="Image de la race <?php echo $race['nom']; ?>"></td>
+</div>
+
+<form method="POST">
+  <input type="hidden" name="action" value="nourrir">
+  <button type="submit">Nourrir</button>
+</form>
+
+<?php
+if (isset($_POST['nourrir'])) {
+  // Requête pour mettre à jour la faim et le bonheur de l'animal
+  $sql4 = "UPDATE Animaux SET Faim = Faim - 1, Bonheur = Bonheur + 10 WHERE id = $idAnimal AND idUtilisateur = $id_utilisateur";
+  $pdo->query($sql4);
 }
 ?>
+
+
 </body>
 </html>
+
+
+<?php
+}
+?>

@@ -1,0 +1,72 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+.background-video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%; /* La vidéo doit remplir toute la page */
+    z-index: -1; /* La vidéo est en arrière-plan */
+    overflow: hidden; /* Cache les bords de la vidéo qui dépassent */
+  }
+  
+.background-video video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ajuste la taille de la vidéo pour remplir le conteneur */
+  }
+  
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 50px;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+    display: flex;
+    justify-content: space-between; /* Espacement entre les informations */
+    align-items: center;
+    padding: 0 20px;
+  }  
+  
+.info {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+  }
+  
+.info-left {
+    margin-right: auto; /* Pour pousser les infos à gauche */
+  }
+  
+.info-right {
+    margin-left: auto; /* Pour pousser les infos à droite */
+  }
+  
+.info-label {
+    font-size: 20px; /* Taille de police des labels */
+    margin-right: 5px; /* Espace entre le label et la valeur */
+    color:white;
+    font-family: 'Press Start 2P', cursive;
+  }
+  
+.info-value {
+    color: red;
+    font-size: 20px; /* Taille de police des valeurs */
+    font-family: 'Press Start 2P', cursive;
+  }
+
+.h1 {
+    font-size: 50px;
+    font-family: 'Press Start 2P', cursive;
+  }
+
+.doggo {
+    width: 600px;
+    height: 400px;
+  }
+  

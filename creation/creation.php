@@ -7,7 +7,7 @@ $id_utilisateur = $_SESSION['id_utilisateur'];
 
 if (!isset($_SESSION['id_utilisateur'])) // Vérification si l'utilisateur est bien connecté
 {
-    header('location: ../connexion/connexion.php');
+    header('location: ../index.php');
     exit;
 }
 
@@ -16,7 +16,7 @@ if(isset($_POST['creation']))
  
 
     // Requête SQL INSERT INTO pour ajouter un nouvel animal
-    $requete3 = "INSERT INTO `Animaux`(`nom`, `idRace`, `idTerrains`, `Sante`, `Bonheur`, `Proprete`, `Faim`, `idUtilisateurs`) VALUES ('".$_POST['nom']."','".$_POST['race']."','".$_POST['terrain']."','100','100','100','100','".$_SESSION['id_utilisateur']."')";
+    $requete3 = "INSERT INTO `Animaux`(`nom`, `idRaces`, `idTerrains`, `Sante`, `Bonheur`, `Proprete`, `Faim`, `idUtilisateurs`) VALUES ('".$_POST['nom']."','".$_POST['race']."','".$_POST['terrain']."','50','50','50','50','".$_SESSION['id_utilisateur']."')";
     echo $requete3;
     // Exécution de la requête SQL
     $resultat3 = $pdo->exec($requete3);
@@ -32,25 +32,30 @@ if(isset($_POST['creation']))
 
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="creation.css">
-    <title>Document</title>
+    <title>Création de votre chien - NintenPix</title>
 </head>
 <body>    
+
+<video autoplay loop muted>
+        <source src="../ressources/creation_back.mov" type="video/mp4">
+</video>
+
     <div class="container">
         <header class="header">
         <h1 
             id ="title" 
-            class="text-center">Creation de votre chien
+            class="text-center">Création de votre chien
             <? echo $_SESSION['id']; ?>
         </h1>
         <p 
             id="description" 
-            class="description text-center">Veuillez chosir les caractéristique de votre chien
+            class="description text-center">Veuillez choisir les caractéristiques de votre chien :
         </p>
         </header>
 
@@ -72,7 +77,7 @@ if(isset($_POST['creation']))
 
             <div class="form-group">
               <p>
-                Races
+                Race
              </p>
             <select id="dropdown" name="race" class="role-control" >
                  <?php
