@@ -19,7 +19,9 @@ $resultat = $pdo->query($sql);
 if ($resultat->rowCount() == 0) {
   echo "Animal non trouvé.";
 } else {
+
   $animal = $resultat->fetch();
+
   $sql2 ="SELECT Races.nom FROM Animaux JOIN Races ON Animaux.idRaces = Races.id WHERE Races.id =".$animal['idRaces']." ";
   $resultat2 = $pdo->query($sql2);
   $race = $resultat2->fetch();
@@ -27,6 +29,16 @@ if ($resultat->rowCount() == 0) {
   $sql3 = "SELECT Races.nom, Races.img FROM Animaux JOIN Races ON Animaux.idRaces = Races.id WHERE Races.id =".$animal['idRaces']." ";
   $resultat3 = $pdo->query($sql3);
   $race = $resultat3->fetch();
+
+  // Requête SQL pour récupérer le nom du terrain associé à l'animal
+  $sql4 ="SELECT Terrains.nom FROM Animaux JOIN Terrains ON Animaux.idTerrains = Terrains.id WHERE Terrains.id =".$animal['idTerrains']." ";
+  $resultat4 = $pdo->query($sql4);
+  $terrain = $resultat4->fetch();
+
+  // Requête SQL pour récupérer à la fois le nom et l'image du terrain associé à l'animal
+  $sql5 = "SELECT Terrains.nom, Terrains.img FROM Animaux JOIN Terrains ON Animaux.idTerrains = Terrains.id WHERE Terrains.id =".$animal['idTerrains']." ";
+  $resultat5 = $pdo->query($sql5);
+  $terrain = $resultat5->fetch();
 ?>
 
 
@@ -37,7 +49,7 @@ if ($resultat->rowCount() == 0) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="puppy.css">
-    <title><?php echo $animal['nom']; ?></title>
+    <title><?php echo $animal['nom']; ?> - NintenPix</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 
@@ -46,9 +58,11 @@ if ($resultat->rowCount() == 0) {
 
 <div class="background-video">
   <video autoplay loop muted>
-    <source src="../ressources/terrains/waterfalls.mov" type="video/mp4">
+    <source src="<?php echo $animal['idTerrains']; ?>" type="video/mp4">
     <!-- Ajouter d'autres sources si nécessaire pour la compatibilité -->
   </video>
+
+</div>
   <div class="overlay">
     <div class="info info-left">
       <span class="info-label">Faim :</span>
@@ -67,7 +81,7 @@ if ($resultat->rowCount() == 0) {
 </div>
 
 <div class="doggo">
-  <img src="<?php echo $race['img']; ?>" alt="Image de la race <?php echo $race['nom']; ?>"></td>
+  <img src="<?php echo $race['img']; ?>" alt="Image de la race" <?php echo $race['nom']; ?>"></td>
 </div>
 
 <form method="POST">
@@ -83,11 +97,9 @@ if (isset($_POST['nourrir'])) {
 }
 ?>
 
-
+<?php } ?>
 </body>
 </html>
 
 
-<?php
-}
-?>
+

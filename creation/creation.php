@@ -4,7 +4,6 @@ include ("../bdd/bdd.php");
 
 $id_utilisateur = $_SESSION['id_utilisateur'];
 
-
 if (!isset($_SESSION['id_utilisateur'])) // Vérification si l'utilisateur est bien connecté
 {
     header('location: ../index.php');
@@ -13,8 +12,6 @@ if (!isset($_SESSION['id_utilisateur'])) // Vérification si l'utilisateur est b
 
 if(isset($_POST['creation']))
 {
- 
-
     // Requête SQL INSERT INTO pour ajouter un nouvel animal
     $requete3 = "INSERT INTO `Animaux`(`nom`, `idRaces`, `idTerrains`, `Sante`, `Bonheur`, `Proprete`, `Faim`, `idUtilisateurs`) VALUES ('".$_POST['nom']."','".$_POST['race']."','".$_POST['terrain']."','50','50','50','50','".$_SESSION['id_utilisateur']."')";
     echo $requete3;
@@ -29,9 +26,10 @@ if(isset($_POST['creation']))
         header('location: ../gestion/gestion.php');
     }
 }
-
 ?>
-<!DOCTYPE html>
+
+
+<!DOCTYPE HTML>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
@@ -43,7 +41,7 @@ if(isset($_POST['creation']))
 <body>    
 
 <video autoplay loop muted>
-        <source src="../ressources/creation_back.mov" type="video/mp4">
+    <source src="../ressources/creation_back.mov" type="video/mp4">
 </video>
 
     <div class="container">
@@ -83,8 +81,7 @@ if(isset($_POST['creation']))
                  <?php
                      $requete = "SELECT * FROM Races";
                      $resultat = $pdo->query($requete);
-                     while ($race = $resultat->fetch()) 
-                     {
+                     while ($race = $resultat->fetch()) {
                         echo '<option value="' . $race['id'] . '">' . $race['nom'] . '</option>';
                      }
                  ?>

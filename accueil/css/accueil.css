@@ -1,4 +1,5 @@
 @charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 
 :root {
   --bs-blue: #0d6efd;
@@ -2840,9 +2841,9 @@ textarea.form-control-lg {
 .btn-primary {
   --bs-btn-color: #fff;
   --bs-btn-bg: #df9617;
-  --bs-btn-border-color: #64a19d;
-  --bs-btn-hover-color: #fff;
-  --bs-btn-hover-bg: #558985;
+  --bs-btn-border-color: blue;
+  --bs-btn-hover-color: white;
+  --bs-btn-hover-bg: red;
   --bs-btn-hover-border-color: #50817e;
   --bs-btn-focus-shadow-rgb: 123, 175, 172;
   --bs-btn-active-color: #fff;
@@ -11046,7 +11047,7 @@ body {
 .btn {
   box-shadow: 0 0.1875rem 0.1875rem 0 rgba(0, 0, 0, 0.1) !important;
   padding: 1.25rem 2rem;
-  font-family: "Varela Round", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-family: 'Press Start 2P', cursive;
   font-size: 80%;
   text-transform: uppercase;
   letter-spacing: 0.15rem;
@@ -11078,6 +11079,7 @@ body {
 .masthead h2, .masthead .h2 {
   max-width: 20rem;
   font-size: 1rem;
+  font-family: 'Press Start 2P', cursive;
 }
 @media (min-width: 768px) {
   .masthead h1, .masthead .h1 {

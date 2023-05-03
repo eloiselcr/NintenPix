@@ -25,7 +25,7 @@ if(isset($_POST['deconnexion']))
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>NintenPix - Accueil</title>
+        <title>Accueil - NintenPix</title>
         <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
         <!-- Font Awesome icons (free version)-->
         <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
@@ -37,7 +37,7 @@ if(isset($_POST['deconnexion']))
     </head>
 
     <video autoplay loop muted>
-		<source src="assets/dog_background.mov" type="video/mp4">
+		<source src="assets/runningdog.mov" type="video/mp4">
 	</video>
 
     <body id="page-top">
@@ -68,8 +68,8 @@ if(isset($_POST['deconnexion']))
                 <div class="d-flex justify-content-center">
                     <div class="text-center">
                         <h1 class="mx-auto my-0 text-uppercase">Bienvenue</h1>
-                        <h2 class="text-white-50 mx-auto mt-2 mb-5">A free, responsive, one page Bootstrap theme created by Start Bootstrap.</h2>
-                        <a class="btn btn-primary" href="../gestion/gestion.php">Accéder à mes chiens</a>
+                        <h2 class="text-white-50 mx-auto mt-2 mb-5">Collectionez les tous ! Réalisé par BURGUET Lucas et LECRONIER Eloise.</h2>
+                        <a class="btn btn-primary" href="../gestion/gestion.php">Acceder a mes chiens</a>
                         <a class="btn btn-primary" href="../creation/creation.php">Adopter !</a>
                     </div>
                 </div>
@@ -78,7 +78,7 @@ if(isset($_POST['deconnexion']))
 
         </header>
         <!-- Footer-->
-        <footer class="footer bg-black small text-center text-white-50"><div class="container px-4 px-lg-5">Copyright &copy; NintenWish</div></footer>
+        <footer class="footer bg-black small text-center text-white-50"><div class="container px-4 px-lg-5">Copyright &copy; NintenPix</div></footer>
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->
