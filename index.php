@@ -9,7 +9,7 @@ session_start();
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="connexion/connexion.css">
-    <title>NintenWish - Connexion</title>
+    <title>Connexion - NintenPix</title>
 </head>
 <body>
 
@@ -17,37 +17,31 @@ session_start();
 
     try // Connexion à la BDD sur PHPMyAdmin
     {
-       
       include ("bdd/bdd.php");
 
-
-    if(isset($_POST['connexion']))
-    {
-      
+    if(isset($_POST['connexion'])) {
       $requete1 = "SELECT * FROM `Utilisateurs` WHERE `login`='".$_POST['login']."'AND `password`= SHA2('".$_POST['password']."', 256);";
+      $resultat=$pdo->query($requete1);
 
-
-        $resultat=$pdo->query($requete1);
-
-        if($resultat->rowCount()>0)
-        {
+        if($resultat->rowCount()>0) {
           $utilisateur = $resultat->fetch();
           $_SESSION['id_utilisateur'] = $utilisateur['id'];
           header('location: accueil/accueil.php');
         }
-        else
-        {
-            echo"Login ou Password incorrect.";
+        else {
+            echo"Login ou Password incorrect";
         }
     }
-}catch(Exception $error)
-{
+}
+
+catch(Exception $error) {
     $error->getMessage();
 }
-if(isset($_POST['inscription']))
-{
-    header('location: /inscription/inscription.php');
+
+if(isset($_POST['inscription'])) {
+    header('location: inscription/inscription.php');
 }
+
     ?>
 <div class="center">
   <div class="ear ear--left"></div>

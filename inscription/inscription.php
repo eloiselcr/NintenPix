@@ -1,7 +1,7 @@
 <?php
 session_start();
-
 ?>
+
 <!DOCTYPE HTML>
 <html lang="fr">
 <head>
@@ -9,32 +9,26 @@ session_start();
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="inscription.css">
-    <title>NintenWish - Inscription</title>
+    <title>Inscription - NintenPix</title>
 </head>
+
 <body>
 
     <?php
-
-    try
-    {
-      include ("../bdd/bdd.php");
+    try{
+      include ("../bdd/bdd.php"); // Connexion à la BDD
     
-    if(isset($_POST['inscription'])){
+    if(isset($_POST['inscription'])){ 
     
       if($_POST['login'] != ''){
     
-      if($_POST['confpassword'] == $_POST['password'])
-    {
+      if($_POST['confpassword'] == $_POST['password']){
       
-        
             $requete1 = "INSERT INTO `Utilisateurs`(`login`, `password`) VALUES ('".$_POST['login']."',SHA2('".$_POST['password']."', 256))";
-
             $resultat=$pdo->query($requete1);
             
-           /* 
+            /*
             $requete2 = "SELECT * FROM `Utilisateurs` WHERE `login`='".$_POST['login']."'AND `password`= SHA2('".$_POST['password']."', 256);";
-
-
             $resultat2=$pdo->query($requete2);
 
             $login = $_POST['login'];
@@ -46,33 +40,30 @@ session_start();
             // $_SESSION['id_utilisateur'] = $utilisateur['id'] = true;
             header('location: ../creation/creation.php');
             
-            if($resultat2->rowCount()>0)
-            {
-             
-            }  */
-          
-        
-
-            
-
-
+            if($resultat2->rowCount()>0) {
+            }  
+            */
       
-    }else
-    {
+    }
+    else {
         echo"Les entrées de password ne correspondent pas.";
     }
-    
-}else { echo"veuillez saisir un login";}
-        }
-        
-}catch(Exception $error)
-{
+  }
+  else { 
+    echo"veuillez saisir un login";
+  }
+    }
+  }
+
+catch(Exception $error) {
     $error->getMessage();
 }
-if(isset($_POST['connexion']))
-{
+
+if(isset($_POST['connexion'])) {
     header('location: ../index.php');
 }
+
+
     ?>
 <div class="center">
   <div class="ear ear--left"></div>
