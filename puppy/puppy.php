@@ -69,7 +69,7 @@ if ($resultat->rowCount() == 0) {
     </video>
 </div>
 
-<div class="bandeau">
+<div class="bandeau"> <!-- On vient afficher le nom du chien -->
     <h1><?php echo $chien->getNom() ?></h1>
 </div>
 

@@ -87,9 +87,11 @@ $resultat = $pdo->query($sql);
 					        <td><a href="../puppy/puppy.php?id=<?php echo $animal['id'];?>" class="btn btn-primary">Accéder</a></td>
 					      </tr>
 					    </tbody>
-					  </table>
 					  <?php 
         }
+		?>
+		</table>
+		<?php
 }
 ?>
 					</div>
