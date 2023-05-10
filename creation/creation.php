@@ -36,6 +36,7 @@ if(isset($_POST['creation']))
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="creation.css">
+    <link rel="icon" href="../ressources/logo_under.png" type="image/png">
     <title>Création de votre chien - NintenPix</title>
 </head>
 <body>    

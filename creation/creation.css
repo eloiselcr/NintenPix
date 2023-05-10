@@ -164,8 +164,12 @@ form {
   padding: 0.75rem;
   background: orange;
   color: inherit;
-  border-radius: 2px;
+  border-radius: 50px;
   cursor: pointer;
+}
+
+.submit-button:hover {
+  background-color: red;
 }
 
 header {

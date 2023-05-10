@@ -72,6 +72,18 @@ class Chien { // Classe Chien qui contient les éléments de base
         $nouvelleSante = $this->getSante() + 10;
         $nouvelleProprete = $this->getProprete() - 5;
         $nouvelleFaim = $this->getFaim() - 10;
+
+        // Conditions de dépassement
+        if ($nouvelleSante > 100) {
+            $nouvelleSante = 100;
+        }
+        if ($nouvelleProprete < 0) {
+            $nouvelleProprete = 0;
+        }
+        if ($nouvelleFaim < 0) {
+            $nouvelleFaim = 0;
+        }
+
         $id = $this->getId();
         $sqlnourrir = "UPDATE Animaux SET Sante=".$nouvelleSante.", Proprete=".$nouvelleProprete.", Faim=".$nouvelleFaim." WHERE id=".$id."";
         $resultatnourrir = $GLOBALS["pdo"]->query($sqlnourrir);
@@ -82,6 +94,15 @@ class Chien { // Classe Chien qui contient les éléments de base
      public function brosser() {
         $nouvelleSante = $this->getSante() + 5;
         $nouvelleProprete = $this->getProprete() + 15;
+
+        // Conditions de dépassement
+        if ($nouvelleSante > 100) {
+            $nouvelleSante = 100;
+        }
+        if ($nouvelleProprete > 100) {
+            $nouvelleProprete = 100;
+        }
+
         $id = $this->getId();
         $sqlbrosser = "UPDATE Animaux SET Sante=".$nouvelleSante.", Proprete=".$nouvelleProprete." WHERE id=".$id."";
         $resultatbrosser = $GLOBALS["pdo"]->query($sqlbrosser);
@@ -92,6 +113,15 @@ class Chien { // Classe Chien qui contient les éléments de base
     public function jouer() {
         $nouveauBonheur = $this->getBonheur() + 20;
         $nouvelleFaim = $this->getFaim() + 10;
+
+        // Conditions de dépassement
+        if ($nouvelleFaim > 100) {
+            $nouvelleFaim = 100;
+        }
+        if ($nouveauBonheur > 100) {
+            $nouveauBonheur = 100;
+        }
+
         $id = $this->getId();
         $sqljouer = "UPDATE Animaux SET Bonheur=".$nouveauBonheur.", Faim=".$nouvelleFaim." WHERE id=".$id."";
         $resultatjouer = $GLOBALS["pdo"]->query($sqljouer);

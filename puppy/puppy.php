@@ -59,6 +59,7 @@ if ($resultat->rowCount() == 0) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <link rel="stylesheet" href="puppy.css">
+    <link rel="icon" href="../ressources/logo_under.png" type="image/png">
     <title><?php echo $animal['nom']; ?> - NintenPix</title>
 </head>
 <body>
