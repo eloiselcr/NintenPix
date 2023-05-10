@@ -33,16 +33,16 @@ if ($resultat->rowCount() == 0) {
     $race = $resultat3->fetch();
 
     // Requête pour récupérer (surtout l'image) du Terrain du chien
-    $sql4 = "SELECT Terrains.nom, Terrains.img FROM Animaux JOIN Terrains ON Animaux.idTerrains = Terrains.id WHERE Animaux.id = ".$animal['id']." ";
+    $sql4 = "SELECT Terrains.nom, Terrains.img FROM Animaux JOIN Terrains ON Animaux.idTerrains = Terrains.id WHERE Terrains.id = ".$animal['idTerrains']." ";
     $resultat4 = $pdo->query($sql4);
     $terrain = $resultat4->fetch();
-
 
     // On crée l'objet Chien correspondant au chien sélectionné
     $chien = new Chien(
         $animal['id'],
         $animal['nom'],
         $race['nom'],
+        $terrain['img'],
         $animal['Sante'],
         $animal['Bonheur'],
         $animal['Proprete'],
@@ -75,17 +75,8 @@ if ($resultat->rowCount() == 0) {
 
 
 <div class="conteneur"> 
-    <?php
-    // On affiche les informations du chien sélectionné
-    echo "Race : " . $chien->getRace() . "<br>";
-    echo "Santé : " . $chien->getSante() . "<br>";
-    echo "Bonheur : " . $chien->getBonheur() . "<br>";
-    echo "Propreté : " . $chien->getProprete() . "<br>";
-    echo "Faim : " . $chien->getFaim() . "<br>";
-    ?>
-
     <div class="imgrace"> <!-- On vient afficher l'image de la Race -->
-        <img src="<?php echo $race['img']; ?>" alt="Image de la race" <?php echo $race['nom']; ?>></td>
+        <img src="<?php echo $race['img']; ?>" alt="Image de la race" <?php echo $race['nom']; ?>>
     </div>
 
     <form method="POST">
@@ -100,29 +91,53 @@ if ($resultat->rowCount() == 0) {
 </div>
 
 <div class="box_status">
-    <h2><?php echo "Santé : " . $chien->getSante() . "<br>"; ?></h2>
-    <h2><?php echo "Bonheur : " . $chien->getBonheur() . "<br>"; ?></h2>
-    <h2><?php echo "Propreté : " . $chien->getProprete() . "<br>"; ?></h2>
-    <h2><?php echo "Faim : " . $chien->getFaim() . "<br>"; ?></h2>
+    <div class="status_title">
+        <p>Statistiques</br></p>
+    </div>
+    <h2> <?php echo " " . $chien->getSante() . "<br>"; ?> </h2>
+    <h2> <?php echo " " . $chien->getBonheur() . "<br>"; ?> </h2>
+    <h2> <?php echo " " . $chien->getProprete() . "<br>"; ?> </h2>
+    <h2> <?php echo " " . $chien->getFaim() . "<br>"; ?> </h2>
+</div>
+
+<div class="icons">
+    <div id="iconsante">
+        <img src="../ressources/icons/sante.png" alt="Icone de la santé" width="50" height="50"></img>
+    </div>
+    <div id="iconbonheur">
+        <img src="../ressources/icons/bonheur.png" alt="Icone du bonheur" width="40" height="40"></img>
+    </div>
+    <div id="iconproprete">
+        <img src="../ressources/icons/proprete.png" alt="Icone de la propreté" width="50" height="50"></img>
+    </div>
+    <div id="iconfaim">
+        <img src="../ressources/icons/faim.png" alt="Icone de la faim" width="50" height="50"></img>
+    </div>
 </div>
 
 <div class="box_interact"></div>
+    <div class="interact_title">
+        <p>Interactions</br></p>
+    </div>
+</div>
 
-<?php 
+<div class="interact_button">
+    <?php 
+    // Si bouton Nourrir
+    if (isset($_POST['nourrir'])) {
+        $chien->nourrir();
+    }
+    // Si bouton Brosser
+    if (isset($_POST['brosser'])) {
+        $chien->brosser();
+    }   
+    // Si bouton Jouer
+    if (isset($_POST['Jouer'])) {
+        $chien->jouer();
+    }
+    ?>
+</div>
 
-// Si bouton Nourrir
-if (isset($_POST['nourrir'])) {
-    $chien->nourrir();
-}
-// Si bouton Brosser
-if (isset($_POST['brosser'])) {
-    $chien->brosser();
-}
-// Si bouton Jouer
-if (isset($_POST['Jouer'])) {
-    $chien->jouer();
-}
-?>
 
 
 </body>
