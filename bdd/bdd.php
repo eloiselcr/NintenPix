@@ -1,7 +1,7 @@
 <?php
     $ipserver="192.168.1.57";
-    $base="nintendogs";
+    $basename="nintendogs";
     $login="root";
     $password="root";
-    $pdo = new PDO('mysql:host='.$ipserver.';dbname='.$base.'',$login,$password);
+    $pdo = new PDO('mysql:host='.$ipserver.';dbname='.$basename.'',$login,$password);
 ?>

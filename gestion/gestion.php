@@ -66,16 +66,18 @@ $resultat = $pdo->query($sql);
 
 						<?php
 						while ($animal = $resultat->fetch()) {
-							$sql2 ="SELECT Races.nom FROM Animaux JOIN Races ON Animaux.idRaces = Races.id WHERE Races.id =".$animal['idRaces']." ";
+							/*$sql2 ="SELECT Races.nom FROM Animaux JOIN Races ON Animaux.idRaces = Races.id WHERE Races.id =".$animal['idRaces']." ";
           					$resultat2 = $pdo->query($sql2);
-          					$race = $resultat2->fetch();
+          					$race = $resultat2->fetch();*/
 
+							// Requête pour faire le lien avec la Race du chien
           					$sql3 = "SELECT Races.nom, Races.img FROM Animaux JOIN Races ON Animaux.idRaces = Races.id WHERE Races.id =".$animal['idRaces']." ";
           					$resultat3 = $pdo->query($sql3);
           					$race = $resultat3->fetch();
       						?>
 
 					      <tr>
+							<!-- Affichage des données du chiens dans un tableau -->
 					        <th scope="row" class="scope" ><?php echo " " . $animal['nom'] . ""; ?></th>
 					        <td><?php echo " " . $race['nom'] . ""; ?></td>
 					        <td><?php echo " " . $animal['Sante'] . ""; ?></td>
