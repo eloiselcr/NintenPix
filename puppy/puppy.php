@@ -78,16 +78,6 @@ if ($resultat->rowCount() == 0) {
     <div class="imgrace"> <!-- On vient afficher l'image de la Race -->
         <img src="<?php echo $race['img']; ?>" alt="Image de la race" <?php echo $race['nom']; ?>>
     </div>
-
-    <form method="POST">
-		<input type="submit" name="nourrir" value="Nourrir">
-	</form>
-    <form method="POST">
-		<input type="submit" name="brosser" value="Brosser">
-	</form>
-    <form method="POST">
-		<input type="submit" name="jouer" value="Jouer">
-	</form>
 </div>
 
 <div class="box_status">
@@ -122,6 +112,17 @@ if ($resultat->rowCount() == 0) {
 </div>
 
 <div class="interact_button">
+    
+    <form method="POST">
+		<input type="submit" name="nourrir" value="Nourrir">
+	</form>
+    <form method="POST">
+		<input type="submit" name="brosser" value="Brosser">
+	</form>
+    <form method="POST">
+		<input type="submit" name="jouer" value="Jouer">
+    </form>
+
     <?php 
     // Si bouton Nourrir
     if (isset($_POST['nourrir'])) {

@@ -28,9 +28,6 @@ session_start();
           $_SESSION['id_utilisateur'] = $utilisateur['id'];
           header('location: accueil/accueil.php');
         }
-        else {
-            echo"Login ou Password incorrect";
-        }
     }
 }
 

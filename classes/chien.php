@@ -71,8 +71,9 @@ class Chien { // Classe Chien qui contient les éléments de base
     public function nourrir() {
         $nouvelleSante = $this->getSante() + 10;
         $nouvelleProprete = $this->getProprete() - 5;
+        $nouvelleFaim = $this->getFaim() - 10;
         $id = $this->getId();
-        $sqlnourrir = "UPDATE Animaux SET Sante=".$nouvelleSante.", Proprete=".$nouvelleProprete." WHERE id=".$id."";
+        $sqlnourrir = "UPDATE Animaux SET Sante=".$nouvelleSante.", Proprete=".$nouvelleProprete.", Faim=".$nouvelleFaim." WHERE id=".$id."";
         $resultatnourrir = $GLOBALS["pdo"]->query($sqlnourrir);
     }
 
@@ -92,7 +93,7 @@ class Chien { // Classe Chien qui contient les éléments de base
         $nouveauBonheur = $this->getBonheur() + 20;
         $nouvelleFaim = $this->getFaim() + 10;
         $id = $this->getId();
-        $sqljouer = "UPDATE Animaux SET Bonheur=$nouveauBonheur, Faim=$nouvelleFaim WHERE id=$id";
+        $sqljouer = "UPDATE Animaux SET Bonheur=".$nouveauBonheur.", Faim=".$nouvelleFaim." WHERE id=".$id."";
         $resultatjouer = $GLOBALS["pdo"]->query($sqljouer);
 }
 

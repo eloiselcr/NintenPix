@@ -18,10 +18,11 @@
 .imgrace {
   position: absolute;
   height: 50%;
-  top: 850%;
-  left: 40%;
+  top: 804%;
+  left: 15%;
   height: auto;
   z-index: 1;
+  margin: 445px;
 }
 
 body {
@@ -129,9 +130,28 @@ h2 {
 
 .interact_button {
   position: absolute;
-  top: 500px;
-  left: 400px;
+  top: 400px;
+  right: 225px;
 }
+
+input[type="submit"] {
+  background-color: green;
+  display: block;
+  width: 100%;
+  margin-bottom: 10px; 
+  font-family: 'Press Start 2P', cursive;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+input[type="submit"]:hover {
+  background-color: red;
+}
+
 
 
 

@@ -45,13 +45,9 @@ session_start();
             */
       
     }
-    else {
-        echo"Les entrées de password ne correspondent pas.";
-    }
+   
   }
-  else { 
-    echo"veuillez saisir un login";
-  }
+ 
     }
   }
 
